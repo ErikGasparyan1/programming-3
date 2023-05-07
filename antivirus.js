@@ -1,10 +1,7 @@
 class Antivirus {
-    constructor(x,y,index) {
-        this.x = x;
-        this.y = y;
+    constructor(x, y, index){
+        super(x, y, index);
         this.energy = 20;
-        this.index = index;
-        this.directions = [];
     }
 
     getNewCoordinates(){
@@ -20,20 +17,9 @@ class Antivirus {
         ];
      }
      
-        chooseCell(character) {
-            var found = [];
-            this.getNewCoordinates()
-            for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length){
-            if (matrix[y][x] == character) {
-                found.push(this.directions[i]);
-            }
-        }
-        
-        } 
-        return found;
+    chooseCell(character) {
+        this.getNewCoordinates()
+        return super.chooseCell(character);
     }
    
     eat() {
