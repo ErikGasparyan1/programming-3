@@ -1,3 +1,8 @@
+const { Socket } = require("engine.io");
+
+var socket = io();
+let myMatrix = [];
+
 var matrix = [];
 var a = 55;
 var b = 70;
@@ -22,8 +27,12 @@ var gshArr = [];
 var virusArr = [];
 var antivirusArr = [];
 var bombArr = [];
-function setup() {
 
+function setup() {
+    setTimeout(function(){
+        createCanvas(matrix[0].length * side, myMatrix.length * side); 
+    }, 500)
+ 
 
 
     for (let i = 0; i < a; i++) {
@@ -42,7 +51,7 @@ function setup() {
 
 
     frameRate(10);
-    createCanvas(matrix[0].length * side, matrix.length * side);
+    
     background('#acacac');
     for (var y = 0; y < matrix.length; ++y) {
         for (var x = 0; x < matrix[y].length; ++x) {
@@ -100,7 +109,7 @@ function setup() {
 
 }
 
-function draw() {
+function drawing(matrix) {
 
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
@@ -151,3 +160,13 @@ function draw() {
 
 
 }
+
+Socket.on("initial", function(data){
+    myMatrix = data
+    return myMatrix 
+})
+
+
+socket.io("send matrix", function(matrix){
+    drawing(matrix)
+})

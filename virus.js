@@ -1,4 +1,6 @@
-class Virus {
+const LivingCreature = require("./LivingCreature");
+
+module.exports = class Virus extends LivingCreature {
     constructor(x,y,index) {
         this.x = x;
         this.y = y;
@@ -36,7 +38,7 @@ class Virus {
         return found;
     }
     mul() {
-        var newCell = random(this.chooseCell(1,2,3));
+        var newCell = this.random(this.chooseCell(1,2,3));
         if (newCell) {
             var newvirus = new Virus(newCell[0], newCell[1], this.index);
             virusArr.push(newvirus);
@@ -47,7 +49,7 @@ class Virus {
 
     eat() {
         let foods = this.chooseCell(1,2,3)
-        let food = random(foods)
+        let food = this.random(foods)
         if (food) {
             this.energy++;
             matrix[this.y][this.x] = 0
@@ -90,7 +92,7 @@ class Virus {
     move() {
         this.energy--;
         let emptyCells = this.chooseCell(0)
-        let newCell = random(emptyCells)
+        let newCell = this.random(emptyCells)
         if (newCell) {
             let newX = newCell[0]
             let newY = newCell[1]

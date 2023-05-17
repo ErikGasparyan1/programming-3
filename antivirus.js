@@ -1,4 +1,6 @@
-class Antivirus {
+const LivingCreature = require("./LivingCreature");
+
+module.exports = class Antivirus extends LivingCreature {
     constructor(x, y, index){
         super(x, y, index);
         this.energy = 20;
@@ -24,7 +26,7 @@ class Antivirus {
    
     eat() {
         let foods = this.chooseCell(4)
-        let food = random(foods)
+        let food = this.random(foods)
         if (food) {
             this.energy++;
             matrix[this.y][this.x] = 0
@@ -52,8 +54,8 @@ class Antivirus {
         this.energy--;
         let emptyCells0 = this.chooseCell(0)
         let emptyCells1 = this.chooseCell(1)
-        let newCell0= random(emptyCells0)
-        let newCell1 = random(emptyCells1)
+        let newCell0= this.random(emptyCells0)
+        let newCell1 = this.random(emptyCells1)
         if (newCell0) {
             let newX0 = newCell0[0]
             let newY0 = newCell0[1]

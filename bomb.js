@@ -4,7 +4,7 @@ class Bomb
         this.x = x;
         this.y = y;
         this.bursted = false;
-        this.cooldown = random(20,150);
+        this.cooldown = this.random(20,150);
         this.disappearCooldown = 5;
         matrix[y][x] = 6;
         this.directions = [

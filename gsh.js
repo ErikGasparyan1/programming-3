@@ -1,4 +1,6 @@
-class Gishatich {
+const LivingCreature = require("./LivingCreature");
+
+module.exports = class Gishatich extends LivingCreature {
     constructor(x, y, index){
         super(x, y, index);
         this.energy = 15;
@@ -22,7 +24,7 @@ class Gishatich {
         return super.chooseCell(character);
     }
     mul() {
-        var newCell = random(this.chooseCell(2));
+        var newCell = this.random(this.chooseCell(2));
         if (newCell) {
             var newGSH = new Gishatich(newCell[0], newCell[1], this.index);
             gshArr.push(newGSH);
@@ -34,7 +36,7 @@ class Gishatich {
 
     eat() {
         let foods = this.chooseCell(2)
-        let food = random(foods)
+        let food = this.random(foods)
         if (food) {
             this.energy++;
             matrix[this.y][this.x] = 0
@@ -61,7 +63,7 @@ class Gishatich {
     move() {
         this.energy--;
         let emptyCells = this.chooseCell(0)
-        let newCell = random(emptyCells)
+        let newCell = this.random(emptyCells)
         if (newCell) {
             let newX = newCell[0]
             let newY = newCell[1]
