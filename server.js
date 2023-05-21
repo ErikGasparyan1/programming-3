@@ -20,11 +20,11 @@ var virusArr = [];
 var antivirusArr = [];
 var bombArr = [];
 
-const Class = require("./class")
-const GrassEater = require("./GrassEater")
-const gsh = require("./gsh")
-const antivirus = require("./antivirus")
-const virus = require("./virus")
+const Class = require("./modules/class")
+const GrassEater = require("./modules/GrassEater")
+const gsh = require("./modules/gsh")
+const antivirus = require("./modules/antivirus")
+const virus = require("./modules/virus")
 
 
 function drawing() {
@@ -57,8 +57,10 @@ function drawing() {
             rect(x * side, y * side, side, side);
         }
     }
-    
-    function drawGame(){
+
+}
+
+function drawGame(){
     for (var i in grassArr) {
         grassArr[i].mul();
     }
@@ -79,12 +81,11 @@ function drawing() {
     }
 }
 
-}
 
 createCanvas()
 setInterval(function()  {
     drawGame()
-}, 1000);
+}, 5000);
 
 io.on('connection', function(socket){
     socket.emit("initial", matrix)

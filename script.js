@@ -31,7 +31,7 @@ var bombArr = [];
 function setup() {
     setTimeout(function(){
         createCanvas(matrix[0].length * side, myMatrix.length * side); 
-    }, 500)
+    }, 5000)
  
 
 
@@ -161,7 +161,7 @@ function drawing(matrix) {
 
 }
 
-Socket.on("initial", function(data){
+socket.on("initial", function(data){
     myMatrix = data
     return myMatrix 
 })
