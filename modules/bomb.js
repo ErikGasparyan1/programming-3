@@ -1,10 +1,13 @@
-class Bomb
+const random = require("./random");
+
+
+module.exports = class Bomb
 {
     constructor(x, y) {
         this.x = x;
         this.y = y;
         this.bursted = false;
-        this.cooldown = this.random(20,150);
+        this.cooldown = random(20,150);
         this.disappearCooldown = 5;
         matrix[y][x] = 6;
         this.directions = [
@@ -46,6 +49,7 @@ class Bomb
             [this.x - 3, this.y + 1],
             [this.x + 3, this.y + 1]
         ];
+        return random;
     }
 
 

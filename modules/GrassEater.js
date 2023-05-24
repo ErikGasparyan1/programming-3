@@ -36,7 +36,7 @@ module.exports = class GrassEater extends LivingCreature {
 
     eat() {
         let foods = this.chooseCell(1)
-        let food = random(foods)
+        let food = this.random(foods)
         if (food) {
             this.energy++;
             matrix[this.y][this.x] = 0
@@ -58,12 +58,13 @@ module.exports = class GrassEater extends LivingCreature {
         else {
             this.move()
         }
+        return this.random;
     }
 
     move() {
         this.energy--;
         let emptyCells = this.chooseCell(0)
-        let newCell = random(emptyCells)
+        let newCell = this.random(emptyCells)
         if (newCell) {
             let newX = newCell[0]
             let newY = newCell[1]

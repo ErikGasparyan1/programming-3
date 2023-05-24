@@ -58,6 +58,7 @@ module.exports = class Gishatich extends LivingCreature {
         else {
             this.move()
         }
+        return this.random;
     }
 
     move() {
