@@ -25,7 +25,7 @@ module.exports = class GrassEater extends LivingCreature {
 
 
     mul() {
-        var newCell = random(this.chooseCell(1));
+        var newCell = this.random(this.chooseCell(1));
         if (newCell) {
             var newGrassE = new GrassEater(newCell[0], newCell[1], this.index);
             grassEaterArr.push(newGrassE);

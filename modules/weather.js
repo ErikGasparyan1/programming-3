@@ -1,24 +1,12 @@
 const LivingCreature = require("./LivingCreature");
 
-module.exports = class Antivirus extends LivingCreature {
+module.exports = class weather extends LivingCreature {
     constructor(x, y, index){
         super(x, y, index);
-        this.energy = 20;
+        this.energy = 18;
     }
 
-    getNewCoordinates(){
-        this.directions = [
-             [this.x - 1, this.y - 1],
-             [this.x    , this.y - 1],
-             [this.x + 1, this.y - 1],
-             [this.x - 1, this.y    ],
-             [this.x + 1, this.y    ],
-             [this.x - 1, this.y + 1],
-             [this.x    , this.y + 1],
-             [this.x + 1, this.y + 1]
-        ];
-     }
-     
+    
     chooseCell(character) {
         this.getNewCoordinates()
         return super.chooseCell(character);
@@ -32,17 +20,17 @@ module.exports = class Antivirus extends LivingCreature {
             matrix[this.y][this.x] = 0
             let newX = food[0]
             let newY = food[1]
-            matrix[food[1]][food[0]] = 5
+            matrix[food[1]][food[0]] = 7
             this.x = newX
             this.y = newY
-            for (var i in virusArr) {
-                if (newX == virusArr[i].x && newY == virusArr[i].y) {
-                    virusArr.splice(i, 1);
+            for (var i in weatherArr) {
+                if (newX == weatherArr[i].x && newY == weatherArr[i].y) {
+                  weatherArr.splice(i, 1);
                     break;
                 }
             }
-            if (this.energy >= 30) {
-                // this.mul()
+            if (this.energy >= 28) {
+                this.mul()
             }
         }
         else {
@@ -60,7 +48,7 @@ module.exports = class Antivirus extends LivingCreature {
             let newX0 = newCell0[0]
             let newY0 = newCell0[1]
             matrix[this.y][this.x] = 0
-            matrix[newY0][newX0] = 5
+            matrix[newY0][newX0] = 7
             this.x = newX0
             this.y = newY0
         }
@@ -68,22 +56,28 @@ module.exports = class Antivirus extends LivingCreature {
             let newX1 = newCell1[0]
             let newY1 = newCell1[1]
             matrix[this.y][this.x] = 1
-            matrix[newY1][newX1] = 5
+            matrix[newY1][newX1] = 7
             this.x = newX1
             this.y = newY1
         }
+        
 
         
     }
-
-    die() {
-        // console.log(11);
-        matrix[this.y][this.x] = 0;
-        for (var i in antivirusArr) {
-            if (this.x == antivirusArr[i].x && this.y == antivirusArr[i].y) {
-                antivirusArr.splice(i, 1);
-                break;
-            }
-        }
-    }
+    mul() {
+      this.multiply++;
+      var newCell = this.random(this.chooseCell(0));
+      if(this.multiply >= 8 && newCell) {
+          var newWeather = new weather(newCell[0],newCell[1], this.index);
+          weatherArr.push(newWeather);
+          matrix[newCell[1]][newCell[0]] = this.index;
+          this.multiply = 0;
+      }
+  }
 }
+
+
+    
+
+
+      

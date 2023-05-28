@@ -47,9 +47,9 @@ module.exports = class Bomb
             [this.x - 3, this.y - 1],
             [this.x + 3, this.y - 1],
             [this.x - 3, this.y + 1],
-            [this.x + 3, this.y + 1]
+            [this.x + 3, this.y + 1]    
         ];
-        return random;
+        // return random;
     }
 
 
@@ -83,7 +83,7 @@ remove() {
 }
 
 burst() {
-    matrix[this.y][this.x] = 6;
+    matrix[this.y][this.x] = 4;
     for (const i in this.directions) {
         let x = this.directions[i][0];
         let y = this.directions[i][1];
@@ -92,7 +92,7 @@ burst() {
         this.removeObject(x, y)
     }
     this.bursted = true;
-    console.log(1);
+    // console.log(1);
 }
 
     removeObject(x, y) {
