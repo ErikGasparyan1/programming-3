@@ -3,8 +3,10 @@ const LivingCreature = require("./LivingCreature");
 module.exports = class weather extends LivingCreature {
     constructor(x, y, index){
         super(x, y, index);
-        this.energy = 18;
+        this.energy = 20;
+        return this.random;
     }
+     
 
     
     chooseCell(character) {
@@ -29,7 +31,7 @@ module.exports = class weather extends LivingCreature {
                     break;
                 }
             }
-            if (this.energy >= 28) {
+            if (this.energy >= 15) {
                 this.mul()
             }
         }
@@ -67,7 +69,7 @@ module.exports = class weather extends LivingCreature {
     mul() {
       this.multiply++;
       var newCell = this.random(this.chooseCell(0));
-      if(this.multiply >= 8 && newCell) {
+      if(this.multiply >= 7 && newCell) {
           var newWeather = new weather(newCell[0],newCell[1], this.index);
           weatherArr.push(newWeather);
           matrix[newCell[1]][newCell[0]] = this.index;

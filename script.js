@@ -6,7 +6,7 @@ matrix = [];
 
 function setup() {
     // frameRate(10);
-    createCanvas(2000, 1500);
+    createCanvas(5000,5000);
     background('grey');
     for (let i = 0; i < n; i++) {
         matrix.push([]);
@@ -44,11 +44,11 @@ function my_draw(matrix) {
                 fill("black")
             }
             else if (matrix[y][x] == 7) {
-                fill("white")
+                fill("pink")
             }
-            else if (matrix[y][x] == 8) {
-                fill("blue")
-            }
+            // else if (matrix[y][x] == 8) {
+            //     fill("blue")
+            // }
 
             rect(x * 50, y * 50, 50, 50);
         }
@@ -56,22 +56,3 @@ function my_draw(matrix) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-// socket.on("initial", function(data){
-//     matrix = data
-//     return matrix 
-// })
-
-
-// socket.io("send matrix", function(matrix){
-//     drawing(matrix)
-// })
